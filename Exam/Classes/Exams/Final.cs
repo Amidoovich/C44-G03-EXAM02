@@ -35,6 +35,7 @@ namespace Exam.Classes.Exams
                     question = new TrueFalse();
 
                 question.CreateQuestion();
+         
                 AddQuestion(question);
             }
 

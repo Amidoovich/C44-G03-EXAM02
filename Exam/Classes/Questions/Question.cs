@@ -60,8 +60,18 @@ namespace Exam.Classes.Questions
         }
         protected void SetBody()
         {
-         
-            Body = Helper.ReadAndValidateString("Please Enter Question Body:");
+
+            string? body;
+            int value;
+            do
+            {
+                body = Helper.ReadAndValidateString("Please Enter Question Body:");
+                if(int.TryParse(body, out value))
+                    Console.WriteLine("please Enter String Value");
+
+            }
+            while (int.TryParse(body,out value));
+
         }
 
 
@@ -71,6 +81,7 @@ namespace Exam.Classes.Questions
         }
         public abstract void CreateQuestion();
         protected abstract void SetAndValidateRightAnswer();
+
         public override string ToString()
         {
             return $"{Header}\tMark{Mark}\n\n{Body}\n\n{string.Join("\n", Answers)}";

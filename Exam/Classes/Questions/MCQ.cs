@@ -39,10 +39,22 @@ namespace Exam.Classes.Questions
             Console.WriteLine("Choices of Question:");
             for (int i = 1; i <= 3; i++)
             {
+                Answer answer;
 
-                string choice = Helper.ReadAndValidateString($"please Enter Choice {i}:");
 
-                Answers.Add(new Answer(i, choice));
+                do
+                {
+                    
+                    string choice = Helper.ReadAndValidateString($"please Enter Choice {i}:");
+                    answer = new Answer(i, choice);
+                    if (IsAnswerIsExist(answer))
+                        Console.WriteLine("please Enter New Choice");
+
+                } while (IsAnswerIsExist(answer));
+
+                
+
+                Answers.Add(answer);
             }
         }
 
@@ -52,6 +64,20 @@ namespace Exam.Classes.Questions
             RightAnswer = Answers[rightAnswerId - 1];
         }
 
+        private bool IsAnswerIsExist(Answer answer)
+        {
+            if(answer?.AnswerText?.Length > 0)
+            {
+                for (int i = 0; i < Answers.Count; i++)
+                {
+                    if (Answers[i].AnswerText == answer.AnswerText)
+                    {
+                        return true;
+                    }
+                }
+            }
+            return false;
+        }
 
         public override string ToString()
         {
