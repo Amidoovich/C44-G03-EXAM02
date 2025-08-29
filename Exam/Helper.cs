@@ -36,7 +36,7 @@ namespace Exam
                     Console.WriteLine("Invalid input\nPlease enter a valid non-empty string.");
                 }
             } while (string.IsNullOrWhiteSpace(input));
-            return input!;
+            return input;
         }
     }
 }
