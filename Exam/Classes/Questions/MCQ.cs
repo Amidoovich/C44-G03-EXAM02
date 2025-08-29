@@ -41,7 +41,6 @@ namespace Exam.Classes.Questions
             {
                 Answer answer;
 
-
                 do
                 {
                     
